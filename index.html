@@ -1,120 +1,165 @@
-<!DOCTYPE html>
-<html lang="zh">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WildPack</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f9fe, #ffffff);
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        header {
-            text-align: center;
-            padding: 80px 0;
-        }
-        h1 {
-            font-size: 3em;
-            color: #333;
-        }
-        p {
-            font-size: 1.2em;
-            color: #666;
-        }
-        .features, .how-it-works {
-            padding: 80px 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-items: center;
-        }
-        .feature-item, .step {
-            width: 30%;
-            min-width: 250px;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .cta {
-            text-align: center;
-            padding: 80px 0;
-        }
-        .cta button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 8px;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 40px 0;
-        }
-        @media (max-width: 768px) {
-            .feature-item, .step {
-                width: 100%;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WildPack｜戶外信任型媒合網路</title>
+  <style>
+    :root{
+      --bg:#0b1117;
+      --bg2:#121b24;
+      --card:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.14);
+      --text:#e8eef5;
+      --muted:#94a3b8;
+      --accent:#ccff00;
+      --accent2:#9ad400;
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;color:var(--text);
+      font-family: Inter, "Noto Sans TC", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(1200px 500px at 80% -10%, rgba(204,255,0,.18), transparent 50%),
+        radial-gradient(900px 400px at -10% 20%, rgba(123,97,255,.18), transparent 55%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
+      line-height:1.6;
+    }
+    .container{max-width:1120px;margin:0 auto;padding:24px}
+    .nav{display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;backdrop-filter:blur(10px);z-index:50;
+      border:1px solid var(--line);background:rgba(11,17,23,.55);padding:12px 16px;border-radius:14px;margin-top:14px}
+    .logo{font-weight:800;letter-spacing:.4px}
+    .badge{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(204,255,0,.12);color:var(--accent);border:1px solid rgba(204,255,0,.35)}
+    .hero{padding:72px 0 32px;display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
+    h1{font-size:clamp(34px,5vw,60px);line-height:1.08;margin:0 0 14px}
+    .sub{color:var(--muted);max-width:62ch}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+    .btn{padding:12px 18px;border-radius:12px;border:1px solid var(--line);text-decoration:none;color:var(--text);font-weight:700;transition:.25s}
+    .btn.primary{background:var(--accent);color:#142200;border-color:var(--accent)}
+    .btn.primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(204,255,0,.28)}
+    .btn.ghost:hover{background:rgba(255,255,255,.06)}
+    .glass{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);backdrop-filter:blur(8px);box-shadow:var(--shadow)}
+    .hero-card{padding:18px}
+    .hero-card h3{margin:0 0 10px}
+    .pill{display:inline-block;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:12px;margin:4px 6px 0 0}
+    section{margin-top:24px}
+    .section-title{font-size:28px;margin:0 0 8px}
+    .section-desc{color:var(--muted);margin:0 0 16px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{padding:18px}
+    .card h4{margin:0 0 8px}
+    .card p{margin:0;color:var(--muted)}
+    .meter{height:8px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;margin-top:10px}
+    .meter > span{display:block;height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));}
+    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .step{padding:16px;position:relative}
+    .step b{display:block;font-size:13px;color:var(--accent);margin-bottom:6px}
+    .step:after{content:"→";position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--muted)}
+    .step:last-child:after{display:none}
+    .wall{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .post{padding:14px}
+    .post small{color:var(--muted)}
+    .kicker{font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
+    .fade{opacity:0;transform:translateY(12px);transition:.6s ease}
+    .fade.show{opacity:1;transform:none}
+    footer{padding:30px 0 50px;color:var(--muted);text-align:center}
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr}
+      .grid3,.flow,.wall{grid-template-columns:1fr}
+      .step:after{display:none}
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <nav class="nav">
+      <div class="logo">WildPack ⛰️</div>
+      <span class="badge">TRIP × TEAMMATE</span>
+    </nav>
 
-<header>
-    <h1>WildPack - 玩家的最佳伴侣</h1>
-    <p>輕鬆管理你的游戏裝備，让生活更精彩！</p>
-</header>
+    <header class="hero">
+      <div>
+        <p class="kicker">The ultimate squad finder for the wild</p>
+        <h1>不是找人而已，<br>是找到<strong style="color:var(--accent)">敢一起出發</strong>的人。</h1>
+        <p class="sub">WildPack 是為戶外場景打造的信任型媒合網路：你可以建立行程、找隊友、比對能力向量，從「有興趣」升級到「真的能成團」。</p>
+        <div class="cta">
+          <a class="btn primary" href="https://wildpack.app" target="_blank" rel="noreferrer">前往 WildPack</a>
+          <a class="btn ghost" href="#features">看核心能力</a>
+        </div>
+      </div>
+      <aside class="hero-card glass fade">
+        <h3>為什麼成團率更高？</h3>
+        <div class="pill">能力匹配</div><div class="pill">角色互補</div><div class="pill">履歷可信度</div>
+        <p class="sub" style="margin-top:10px">用五維能力模型（體能、經驗、社交、領導、技能）對齊隊伍，減少「聊很久但最後沒出發」的摩擦。</p>
+      </aside>
+    </header>
 
-<section class="features">
-    <div class="feature-item">
-        <h2>智能分类</h2>
-        <p>自动识别并分类你的物品，让你的背包井井有条。</p>
-    </div>
-    <div class="feature-item">
-        <h2>快速搜索</h2>
-        <p>一键查找任何裝備，再也不用翻箱倒柜。</p>
-    </div>
-    <div class="feature-item">
-        <h2>云端同步</h2>
-        <p>你的裝備資料随时同步，多设备无缝切换。</p>
-    </div>
-</section>
+    <section id="features">
+      <h2 class="section-title">產品價值主張</h2>
+      <p class="section-desc">從「找團」到「找到對的人」，關鍵在信任資料與匹配邏輯。</p>
+      <div class="grid3">
+        <article class="card glass fade"><h4>TRIP：快速建立行程</h4><p>主揪可定義路線、日期、難度與裝備需求，減少私訊來回。</p></article>
+        <article class="card glass fade"><h4>TEAMMATE：找對頻隊友</h4><p>依行程條件與能力向量篩選候選，降低臨時爆雷與體能落差。</p></article>
+        <article class="card glass fade"><h4>Hiking History：建立信任</h4><p>行程紀錄、角色表現與互動回饋，讓下一次媒合更精準。</p></article>
+      </div>
+    </section>
 
-<section class="how-it-works">
-    <div class="step">
-        <h2>步驟1</h2>
-        <p>下载并安装WildPack应用。</p>
-    </div>
-    <div class="step">
-        <h2>步驟2</h2>
-        <p>連結你的游戏帳號，開始同步資料。</p>
-    </div>
-    <div class="step">
-        <h2>步驟3</h2>
-        <p>輕鬆管理你的裝備，享受便利生活！</p>
-    </div>
-</section>
+    <section>
+      <h2 class="section-title">五維能力模型（示意）</h2>
+      <p class="section-desc">用可比較的能力語言，讓隊伍配置不再靠運氣。</p>
+      <div class="grid3">
+        <div class="card glass fade"><h4>Stamina 體能</h4><div class="meter"><span style="width:78%"></span></div></div>
+        <div class="card glass fade"><h4>Experience 經驗</h4><div class="meter"><span style="width:70%"></span></div></div>
+        <div class="card glass fade"><h4>Social 協作</h4><div class="meter"><span style="width:82%"></span></div></div>
+        <div class="card glass fade"><h4>Leadership 帶隊</h4><div class="meter"><span style="width:64%"></span></div></div>
+        <div class="card glass fade"><h4>Skills 技術</h4><div class="meter"><span style="width:74%"></span></div></div>
+        <div class="card glass fade"><h4>Match Score</h4><div class="meter"><span style="width:86%"></span></div></div>
+      </div>
+    </section>
 
-<section class="cta">
-    <button>立即下載</button>
-</section>
+    <section>
+      <h2 class="section-title">使用流程</h2>
+      <div class="flow">
+        <div class="step card glass fade"><b>Step 1</b>建立／挑選行程目標</div>
+        <div class="step card glass fade"><b>Step 2</b>查看候選隊友與匹配分數</div>
+        <div class="step card glass fade"><b>Step 3</b>確認角色與裝備分工</div>
+        <div class="step card glass fade"><b>Step 4</b>成團出發並累積履歷</div>
+      </div>
+    </section>
 
-<footer>
-    <p>&copy; 2023 WildPack. All rights reserved.</p>
-</footer>
+    <section>
+      <h2 class="section-title">社群貼文牆（Mockup）</h2>
+      <div class="wall">
+        <article class="post card glass fade">
+          <small>@wildpack.app · 新貼文</small>
+          <p>連假前海巡工具上線：把揪團貼文整理成可搜尋清單，找團更快。</p>
+        </article>
+        <article class="post card glass fade">
+          <small>@wildpack.app · 行程招募</small>
+          <p>03/21 基隆天際線 15+1 連峰，尚有名額，歡迎有一定體能的夥伴。</p>
+        </article>
+      </div>
+    </section>
 
+    <section class="card glass fade" style="padding:24px;text-align:center;margin-top:22px">
+      <h2 style="margin:0 0 8px">準備下一次出發？</h2>
+      <p class="section-desc" style="margin-bottom:14px">讓 WildPack 幫你把「想爬山」變成「真的成團」。</p>
+      <a class="btn primary" href="https://wildpack.app" target="_blank" rel="noreferrer">立即體驗 WildPack</a>
+    </section>
+
+    <footer>
+      WildPack Demo · Built for capability testing with local Qwen + human polish.
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})})
+    });
+    const io=new IntersectionObserver((entries)=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.12});
+    document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+  </script>
 </body>
 </html>
-
