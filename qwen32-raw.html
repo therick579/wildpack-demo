@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WildPack 官方感產品頁</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero {
+            width: 100%;
+            height: 40vh;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"><rect width="1600" height="900" fill="#2c3e50"/><path d="M0,720L80,640C160,560,320,480,480,480C640,480,800,560,960,640C1120,720,1280,720,1440,640C1600,560,1760,480,1920,480L2000,480L2000,0L0,0Z" fill="#34495e"/></svg>');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero h1 {
+            color: #CCFF00;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .core-values, .five-dimensions, .usage-process, .community-wall {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            background-color: rgba(46, 68, 83, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+            padding: 20px;
+            width: calc(33% - 60px);
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card h2, .card p {
+            color: white;
+        }
+        .community-wall img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        .cta {
+            background-color: #CCFF00;
+            color: black;
+            padding: 20px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            margin-bottom: 50px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .cta:hover {
+            background-color: #b8d7a3;
+        }
+        footer {
+            width: 100%;
+            padding: 20px;
+            background-color: #34495e;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .card {
+                width: calc(50% - 40px);
+            }
+        }
+        @media (max-width: 480px) {
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>WildPack：戶外信任型媒合網路</h1>
+    </div>
+    <section class="core-values">
+        <div class="card">
+            <h2>TRIP x TEAMMATE</h2>
+            <p>找到最適合的旅伴，一起探索未知。</p>
+        </div>
+        <div class="card">
+            <h2>五維能力評估</h2>
+            <p>根據體能、經驗、社交、領導力和技能篩選最佳隊友。</p>
+        </div>
+        <div class="card">
+            <h2>社群互動</h2>
+            <p>加入 WildPack 社群，分享你的冒險故事。</p>
+        </div>
+    </section>
+    <section class="five-dimensions">
+        <div class="card">
+            <h2>體能 (Stamina)</h2>
+            <p>評估你的耐力和持久力。</p>
+        </div>
+        <div class="card">
+            <h2>經驗 (Experience)</h2>
+            <p>分享你的戶外經驗，獲取更多信任。</p>
+        </div>
+        <div class="card">
+            <h2>社交 (Social)</h2>
+            <p>良好的社交能力讓你更容易融入團隊。</p>
+        </div>
+        <div class="card">
+            <h2>領導力 (Leadership)</h2>
+            <p>展現你的領導才能，成為隊伍中的核心人物。</p>
+        </div>
+        <div class="card">
+            <h2>技能 (Skills)</h2>
+            <p>列出你的專業技能，讓他人信賴你。</p>
+        </div>
+    </section>
+    <section class="usage-process">
+        <div class="card">
+            <h2>1. 建立個人檔案</h2>
+            <p>填寫詳細資訊，展示你的五維能力。</p>
+        </div>
+        <div class="card">
+            <h2>2. 搜尋活動</h2>
+            <p>瀏覽並加入感興趣的戶外活動。</p>
+        </div>
+        <div class="card">
+            <h2>3. 評估匹配度</h2>
+            <p>系統會根據五維能力評估最佳匹配對象。</p>
+        </div>
+        <div class="card">
+            <h2>4. 出發冒險</h2>
+            <p>與隊友一起享受戶外活動的樂趣。</p>
+        </div>
+    </section>
+    <section class="community-wall">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'><rect width='1600' height='900' fill='#2c3e50'/><text x='50%' y='50%' font-size='48' text-anchor='middle' fill='#CCFF00'>社群動態牆</text></svg>" alt="社群動態牆">
+        <p>在 wildpack.app 上查看最新活動和揪團資訊。</p>
+    </section>
+    <a href="#" class="cta" onclick="scrollToTop(); return false;">立即加入 WildPack</a>
+    <footer>
+        <p>&copy; 2023 WildPack. All rights reserved.</p>
+    </footer>
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
